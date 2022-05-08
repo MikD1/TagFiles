@@ -1,16 +1,25 @@
-const { app, BrowserWindow } = require('electron');
-const url = require('url');
-const path = require('path');
+const { app, BrowserWindow } = require('electron')
+const url = require("url");
+const path = require("path");
 
-function onReady() {
-    win = new BrowserWindow({ width: 900, height: 6700 })
-    win.loadURL(url.format({
-        pathname: path.join(
-            __dirname,
-            'dist/tag-files/index.html'),
-        protocol: 'file:',
-        slashes: true
-    }))
+let mainWindow
+
+function createWindow() {
+    mainWindow = new BrowserWindow({
+        width: 1024,
+        height: 768,
+        webPreferences: {
+            nodeIntegration: true
+        }
+    })
+
+    mainWindow.loadURL(
+        url.format({
+            pathname: path.join(__dirname, `/dist/tag-files/index.html`),
+            protocol: "file:",
+            slashes: true
+        })
+    );
 }
 
-app.on('ready', onReady);
+app.on('ready', createWindow)
