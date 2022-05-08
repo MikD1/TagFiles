@@ -1,0 +1,10 @@
+@use '@angular/material'as mat;
+@include mat.core();
+
+$theme-primary: mat.define-palette(mat.$blue-palette, 700);
+$theme-accent: mat.define-palette(mat.$blue-gray-palette, 600);
+
+$theme: mat.define-dark-theme((color: (primary: $theme-primary,
+            accent: $theme-accent)));
+
+@include mat.all-component-themes($theme);

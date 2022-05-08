@@ -1,0 +1,9 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 100%;
+}
+
+.panel {
+    background-color: #252525;
+}
