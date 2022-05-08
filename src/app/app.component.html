@@ -1,23 +1,32 @@
 <div class="wrapper">
     <div class="panel">
-        <mat-form-field appearance="outline">
-            <mat-label>Search</mat-label>
-            <input matInput>
-        </mat-form-field>
-
-        <div>
-            <button mat-raised-button>Basic</button>
-            <button mat-raised-button color="primary">Primary</button>
-            <button mat-raised-button color="accent">Accent</button>
-            <button mat-raised-button color="warn">Warn</button>
+        <div class="inner-wrapper">
+            <mat-form-field appearance="outline">
+                <mat-label>Search</mat-label>
+                <input matInput>
+            </mat-form-field>
         </div>
     </div>
+
     <div>
-        Two
-        <mat-form-field appearance="outline">
-            <mat-label>Search</mat-label>
-            <input matInput>
-        </mat-form-field>
+        <div class="inner-wrapper">
+            <div class="toolbar">
+                <button mat-icon-button>
+                    <mat-icon>arrow_upward</mat-icon>
+                </button>
+                <span>path / to / folder</span>
+            </div>
+            <div class="nodes-container">
+                <div *ngFor="let node of nodes">
+                    <mat-card class="node-card">
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+                        <mat-card-content>
+                            <p>{{node}}</p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -6,4 +6,32 @@
 
 .panel {
     background-color: #252525;
+
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+.inner-wrapper {
+    margin: 15px;
+}
+
+.toolbar {
+    margin: 18px 0;
+    height: 50px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    border-color: #252525;
+    background-color: #252525;
+}
+
+.nodes-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+    gap: 15px;
+}
+
+.node-card {
+    max-width: 150px;
 }
