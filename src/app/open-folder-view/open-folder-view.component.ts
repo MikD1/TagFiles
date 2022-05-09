@@ -10,4 +10,7 @@ export class OpenFolderViewComponent implements OnInit {
 
     public ngOnInit(): void {
     }
+
+    public openFolder(): void {
+    }
 }
