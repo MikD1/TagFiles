@@ -11,10 +11,25 @@
     <div>
         <div class="inner-wrapper">
             <div class="toolbar">
-                <button mat-icon-button>
-                    <mat-icon>arrow_upward</mat-icon>
-                </button>
-                <span>path / to / folder</span>
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <span>
+                        <span *ngFor="let part of locationParts let i = index">
+                            <button mat-button>{{part}}</button>
+                            <span *ngIf="i < locationParts.length - 1">/</span>
+                        </span>
+                    </span>
+                </div>
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon>add</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                        <mat-icon>remove</mat-icon>
+                    </button>
+                </div>
             </div>
             <div class="nodes-container">
                 <div *ngFor="let node of nodes">

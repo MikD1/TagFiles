@@ -23,12 +23,15 @@
     border-radius: 5px;
     border-color: #252525;
     background-color: #252525;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .nodes-container {
     display: flex;
     flex-wrap: wrap;
-    
+    justify-content: space-around;
     gap: 15px;
 }
 
