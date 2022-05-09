@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IpcService } from '../ipc.service';
 
 @Component({
@@ -11,13 +11,16 @@ export class OpenFolderViewComponent implements OnInit {
         private readonly ipc: IpcService
     ) { }
 
+    @Output()
+    public folderSelected = new EventEmitter<string>();
+
     public ngOnInit(): void {
-        this.ipc.on('resp', (event: any, arg: any) => {
-            console.log(arg);
+        this.ipc.on('folderSelected', (_event: any, arg: any) => {
+            this.folderSelected.emit(arg);
         });
     }
 
     public openFolder(): void {
-        this.ipc.send('req', 'data from renderer');
+        this.ipc.send('openFolder');
     }
 }

@@ -1,3 +1,9 @@
-<!-- <app-main-view></app-main-view> -->
-<app-open-folder-view></app-open-folder-view>
+<ng-container *ngIf="folder">
+    <app-main-view></app-main-view>
+</ng-container>
+
+<ng-container *ngIf="!folder">
+    <app-open-folder-view (folderSelected)="onFolderSelected($event)"></app-open-folder-view>
+</ng-container>
+
 <!-- <router-outlet></router-outlet> -->
