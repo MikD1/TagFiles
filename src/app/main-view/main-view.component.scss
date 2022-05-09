@@ -1,0 +1,38 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 100%;
+}
+
+.panel {
+    background-color: #252525;
+
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+.inner-wrapper {
+    margin: 15px;
+}
+
+.toolbar {
+    margin: 18px 0;
+    height: 50px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    border-color: #252525;
+    background-color: #252525;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nodes-container {
+    display: grid;
+    justify-content: space-between;
+    align-content: flex-start;
+    grid-gap: 15px;
+    overflow-y: scroll;
+    height: 90vh;
+}
