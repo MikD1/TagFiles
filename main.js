@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const url = require("url");
 const path = require("path");
 
@@ -8,7 +8,8 @@ function createWindow() {
         width: 1024,
         height: 768,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false
         }
     })
 
@@ -19,6 +20,13 @@ function createWindow() {
             slashes: true
         })
     );
+
+    mainWindow.webContents.openDevTools();
 }
 
-app.on('ready', createWindow)
+app.on('ready', createWindow);
+
+ipcMain.on('req', (event, arg) => {
+    console.log(arg)
+    event.reply('resp', 'data from main')
+})
