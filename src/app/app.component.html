@@ -23,17 +23,17 @@
                     </span>
                 </div>
                 <div>
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="zoomIn()">
                         <mat-icon>add</mat-icon>
                     </button>
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="zoomOut()">
                         <mat-icon>remove</mat-icon>
                     </button>
                 </div>
             </div>
             <div class="nodes-container">
                 <div *ngFor="let node of nodes">
-                    <mat-card class="node-card">
+                    <mat-card [style.max-width]="previewSize + 'px'">
                         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
                         <mat-card-content>
                             <p>{{node}}</p>

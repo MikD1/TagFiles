@@ -16,4 +16,19 @@ export class AppComponent implements OnInit {
             this.nodes.push(`file${i}.txt`);
         }
     }
+
+    public previewSize: number = 100;
+
+    public zoomIn(): void {
+        this.previewSize = Math.min(this.previewSize + 10, this.maxPreviewSize);
+        console.log(this.previewSize);
+    }
+
+    public zoomOut(): void {
+        this.previewSize = Math.max(this.previewSize - 10, this.minPreviewSize);
+        console.log(this.previewSize);
+    }
+
+    private minPreviewSize: number = 50;
+    private maxPreviewSize: number = 150;
 }
