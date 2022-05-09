@@ -31,9 +31,9 @@
                     </button>
                 </div>
             </div>
-            <div class="nodes-container">
+            <div class="nodes-container" [style.grid-template-columns]="'repeat(auto-fill,' + previewSize + 'px)'">
                 <div *ngFor="let node of nodes">
-                    <mat-card [style.max-width]="previewSize + 'px'">
+                    <mat-card>
                         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
                         <mat-card-content>
                             <p>{{node}}</p>

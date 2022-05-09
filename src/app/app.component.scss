@@ -29,8 +29,10 @@
 }
 
 .nodes-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 15px;
+    display: grid;
+    justify-content: space-between;
+    align-content: flex-start;
+    grid-gap: 15px;
+    overflow-y: scroll;
+    height: 90vh;
 }
