@@ -1,22 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { IpcService } from '../ipc.service';
+import { FileNode } from '../model/fileNode';
 
 @Component({
     selector: 'app-main-view',
     templateUrl: './main-view.component.html',
     styleUrls: ['./main-view.component.scss']
 })
-export class MainViewComponent implements OnInit {
-    constructor() { }
+export class MainViewComponent implements OnInit, OnChanges {
+    constructor(
+        private ipc: IpcService,
+    ) { }
+
+    @Input()
+    public location?: string;
 
     public locationParts: string[] = [];
-    public nodes: string[] = [];
+    public nodes: FileNode[] = [];
     public previewSize: number = 150;
 
     public ngOnInit(): void {
-        this.locationParts = ['Users', 'mik', 'Downloads', 'test'];
+        this.ipc.on('nodesLoaded', (arg: any) => this.onNodesLoaded(arg));
+    }
 
-        for (let i = 0; i < 54; ++i) {
-            this.nodes.push(`file${i}.txt`);
+    public ngOnChanges(changes: SimpleChanges): void {
+        if (changes['location']?.currentValue) {
+            this.setLocation(changes['location'].currentValue);
         }
     }
 
@@ -26,6 +35,15 @@ export class MainViewComponent implements OnInit {
 
     public zoomOut(): void {
         this.previewSize = Math.max(this.previewSize - 10, this.minPreviewSize);
+    }
+
+    private setLocation(location: string): void {
+        this.locationParts = location.split('/').filter(part => part !== '');
+        this.ipc.send('loadNodes', location);
+    }
+
+    private onNodesLoaded(data: any[]): void {
+        this.nodes = data;
     }
 
     private minPreviewSize: number = 100;
