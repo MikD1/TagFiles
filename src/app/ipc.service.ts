@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { IpcRenderer } from 'electron';
 
 @Injectable({
     providedIn: 'root'
 })
 export class IpcService {
-    constructor() {
+    constructor(
+        private zone: NgZone
+    ) {
         if (window.require) {
             try {
                 this.ipc = window.require('electron').ipcRenderer;
@@ -17,11 +19,16 @@ export class IpcService {
         }
     }
 
-    public on(channel: string, listener: (event: any, ...args: any[]) => void): void {
+    public on(channel: string, callback: any): void {
         if (!this.ipc) {
             return;
         }
-        this.ipc.on(channel, listener);
+
+        this.ipc.on(channel, (_event, arg) => {
+            this.zone.run(() => {
+                callback(arg);
+            });
+        });
     }
 
     public send(channel: string, ...args: any): void {

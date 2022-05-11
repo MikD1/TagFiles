@@ -15,13 +15,12 @@ export class OpenFolderViewComponent implements OnInit {
     public folderSelected = new EventEmitter<string>();
 
     public ngOnInit(): void {
-        this.ipc.on('folderSelected', (_event: any, arg: any) => {
+        this.ipc.on('folderSelected', (arg: any) => {
             this.folderSelected.emit(arg);
         });
     }
 
     public openFolder(): void {
-        // this.ipc.send('openFolder');
-        this.folderSelected.emit('/1/2/3');
+        this.ipc.send('openFolder');
     }
 }
