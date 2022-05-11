@@ -38,7 +38,7 @@
                         <img *ngIf="node.isDirectory" mat-card-image src="assets/folder_img.svg">
                         <img *ngIf="!node.isDirectory" mat-card-image src="assets/file_img.svg">
                         <mat-card-content>
-                            <p>{{node.name}}</p>
+                            <p class="node-name">{{node.name}}</p>
                         </mat-card-content>
                     </mat-card>
                 </div>

@@ -42,3 +42,9 @@
     overflow-y: scroll;
     height: 80vh; // TODO: dynamic
 }
+
+.node-name {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
