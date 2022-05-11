@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
 
     public onFolderSelected(folder: string): void {
         this.folder = folder;
-        this.cdr.detectChanges();
+        // this.cdr.detectChanges();
     }
 }

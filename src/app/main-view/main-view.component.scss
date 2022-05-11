@@ -16,8 +16,13 @@
     margin: 15px;
 }
 
+.main-container {
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    grid-gap: 15px;
+}
+
 .toolbar {
-    margin: 18px 0;
     height: 50px;
     border: 1px solid currentColor;
     border-radius: 5px;
@@ -34,5 +39,5 @@
     align-content: flex-start;
     grid-gap: 15px;
     overflow-y: scroll;
-    height: 88vh;
+    height: 80vh; // TODO: dynamic
 }

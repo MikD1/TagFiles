@@ -8,8 +8,8 @@
         </div>
     </div>
 
-    <div>
-        <div class="inner-wrapper">
+    <div class="inner-wrapper">
+        <div class="main-container">
             <div class="toolbar">
                 <div>
                     <button mat-icon-button>
@@ -31,6 +31,7 @@
                     </button>
                 </div>
             </div>
+
             <div class="nodes-container" [style.grid-template-columns]="'repeat(auto-fill,' + previewSize + 'px)'">
                 <div *ngFor="let node of nodes">
                     <mat-card>

@@ -21,6 +21,7 @@ export class OpenFolderViewComponent implements OnInit {
     }
 
     public openFolder(): void {
-        this.ipc.send('openFolder');
+        // this.ipc.send('openFolder');
+        this.folderSelected.emit('/1/2/3');
     }
 }
