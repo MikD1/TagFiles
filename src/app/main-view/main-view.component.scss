@@ -39,8 +39,10 @@
     justify-content: space-between;
     align-content: flex-start;
     grid-gap: 15px;
-    overflow-y: scroll;
-    height: 80vh; // TODO: dynamic
+    // overflow-y: scroll;
+    // height: 80vh; // TODO: dynamic
+    overflow: auto;
+    height: calc(100vh - 98px);
 }
 
 .node-name {
