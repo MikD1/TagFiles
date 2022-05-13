@@ -58,6 +58,8 @@ export class MainViewComponent implements OnInit, OnChanges {
 
     private onNodesLoaded(data: any[]): void {
         this.nodes = data;
+
+        this.ipc.send('generatePreview', this.nodes[0].path);
     }
 
     private minPreviewSize: number = 100;

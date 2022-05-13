@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain, dialog, shell } = require('electron');
 const url = require("url");
 const path = require("path");
 const fs = require('fs');
+const { exec } = require('child_process');
+const uuid = require('uuid');
 
 let mainWindow
 function createWindow() {
@@ -68,4 +70,16 @@ ipcMain.on('loadNodes', (event, arg) => {
 ipcMain.on('getParentDirectory', (event, arg) => {
     var parent = path.dirname(arg[0]);
     event.returnValue = parent;
+});
+
+ipcMain.on('generatePreview', (event, arg) => {
+    var outputFilename = path.join(__dirname, uuid.v4() + '.jpeg');
+    var arguments = `-i "${arg}" -vf scale=100:-1 -vframes 1 "${outputFilename}"`;
+    var ffmpeg = path.join(__dirname, 'ffmpeg');
+    exec(`${ffmpeg} ${arguments}`, (error, stdout, stderr) => {
+        if (error) {
+            console.log(`exec error: ${error}`);
+            return;
+        }
+    });
 });
