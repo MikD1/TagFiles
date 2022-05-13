@@ -39,8 +39,6 @@
     justify-content: space-between;
     align-content: flex-start;
     grid-gap: 15px;
-    // overflow-y: scroll;
-    // height: 80vh; // TODO: dynamic
     overflow: auto;
     height: calc(100vh - 98px);
 }
@@ -49,4 +47,9 @@
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.node:hover {
+    background-color: #555555;
+    cursor: pointer;
 }

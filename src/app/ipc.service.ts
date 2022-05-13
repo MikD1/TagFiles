@@ -35,7 +35,16 @@ export class IpcService {
         if (!this.ipc) {
             return;
         }
+
         this.ipc.send(channel, ...args);
+    }
+
+    public sendSync(channel: string, ...args: any): any {
+        if (!this.ipc) {
+            return;
+        }
+
+        return this.ipc.sendSync(channel, args);
     }
 
     private ipc: IpcRenderer | undefined = void 0;

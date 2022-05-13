@@ -29,6 +29,19 @@ export class MainViewComponent implements OnInit, OnChanges {
         }
     }
 
+    public selectNode(node: FileNode) {
+        if (node.isDirectory) {
+            this.setLocation(node.path);
+        }
+    }
+
+    public locationUp(): void {
+        let parent = this.ipc.sendSync('getParentDirectory', this.location);
+        if (parent) {
+            this.setLocation(parent);
+        }
+    }
+
     public zoomIn(): void {
         this.previewSize = Math.min(this.previewSize + 10, this.maxPreviewSize);
     }
@@ -38,6 +51,7 @@ export class MainViewComponent implements OnInit, OnChanges {
     }
 
     private setLocation(location: string): void {
+        this.location = location;
         this.locationParts = location.split('/').filter(part => part !== '');
         this.ipc.send('loadNodes', location);
     }

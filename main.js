@@ -64,3 +64,8 @@ ipcMain.on('loadNodes', (event, arg) => {
         event.reply('nodesLoaded', result);
     });
 });
+
+ipcMain.on('getParentDirectory', (event, arg) => {
+    var parent = path.dirname(arg[0]);
+    event.returnValue = parent;
+});

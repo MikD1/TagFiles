@@ -12,7 +12,7 @@
         <div class="main-container">
             <div class="toolbar">
                 <div>
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="locationUp()">
                         <mat-icon>arrow_upward</mat-icon>
                     </button>
                     <span>
@@ -34,7 +34,7 @@
 
             <div class="nodes-container" [style.grid-template-columns]="'repeat(auto-fill,' + previewSize + 'px)'">
                 <div *ngFor="let node of nodes">
-                    <mat-card>
+                    <mat-card class="node" (click)="selectNode(node)">
                         <img *ngIf="node.isDirectory" mat-card-image src="assets/folder_img.svg">
                         <img *ngIf="!node.isDirectory" mat-card-image src="assets/file_img.svg">
                         <mat-card-content>
