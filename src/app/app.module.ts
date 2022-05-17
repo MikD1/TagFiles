@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/common/material.module';
 import { MainViewComponent } from './main-view/main-view.component';
 import { OpenFolderViewComponent } from './open-folder-view/open-folder-view.component';
+import { FileNodeComponent } from './main-view/file-node/file-node.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MainViewComponent,
-        OpenFolderViewComponent
+        OpenFolderViewComponent,
+        FileNodeComponent
     ],
     imports: [
         BrowserModule,

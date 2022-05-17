@@ -21,7 +21,6 @@ export class MainViewComponent implements OnInit, OnChanges {
 
     public ngOnInit(): void {
         this.ipc.on('nodesLoaded', (args: any) => this.onNodesLoaded(args[0]));
-        this.ipc.on('previewGenerated', (args: any) => this.onPreviewGenerated(args[0], args[1]));
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
@@ -59,13 +58,6 @@ export class MainViewComponent implements OnInit, OnChanges {
 
     private onNodesLoaded(data: any[]): void {
         this.nodes = data;
-
-        this.ipc.send('generatePreview', this.nodes[0].path);
-    }
-
-    private onPreviewGenerated(data: any, path: string): void {
-        console.log(path);
-        console.log(data);
     }
 
     private minPreviewSize: number = 100;

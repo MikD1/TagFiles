@@ -34,13 +34,7 @@
 
             <div class="nodes-container" [style.grid-template-columns]="'repeat(auto-fill,' + previewSize + 'px)'">
                 <div *ngFor="let node of nodes">
-                    <mat-card class="node" (click)="selectNode(node)">
-                        <img *ngIf="node.isDirectory" mat-card-image src="assets/folder_img.svg">
-                        <img *ngIf="!node.isDirectory" mat-card-image src="assets/file_img.svg">
-                        <mat-card-content>
-                            <p class="node-name">{{node.name}}</p>
-                        </mat-card-content>
-                    </mat-card>
+                    <app-file-node [node]="node" (nodeSelected)="selectNode($event)"></app-file-node>
                 </div>
             </div>
         </div>

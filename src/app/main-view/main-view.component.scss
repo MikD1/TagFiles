@@ -42,14 +42,3 @@
     overflow: auto;
     height: calc(100vh - 98px);
 }
-
-.node-name {
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.node:hover {
-    background-color: #555555;
-    cursor: pointer;
-}
