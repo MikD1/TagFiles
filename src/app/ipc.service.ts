@@ -24,9 +24,9 @@ export class IpcService {
             return;
         }
 
-        this.ipc.on(channel, (_event, arg) => {
+        this.ipc.on(channel, (_event, ...args) => {
             this.zone.run(() => {
-                callback(arg);
+                callback(args);
             });
         });
     }

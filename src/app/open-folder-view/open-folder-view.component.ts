@@ -15,8 +15,8 @@ export class OpenFolderViewComponent implements OnInit {
     public folderSelected = new EventEmitter<string>();
 
     public ngOnInit(): void {
-        this.ipc.on('folderSelected', (arg: any) => {
-            this.folderSelected.emit(arg);
+        this.ipc.on('folderSelected', (args: any) => {
+            this.folderSelected.emit(args[0]);
         });
     }
 

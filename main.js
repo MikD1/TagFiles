@@ -76,10 +76,25 @@ ipcMain.on('generatePreview', (event, arg) => {
     var outputFilename = path.join(__dirname, uuid.v4() + '.jpeg');
     var arguments = `-i "${arg}" -vf scale=100:-1 -vframes 1 "${outputFilename}"`;
     var ffmpeg = path.join(__dirname, 'ffmpeg');
-    exec(`${ffmpeg} ${arguments}`, (error, stdout, stderr) => {
+    exec(`${ffmpeg} ${arguments}`, (error, _stdout, _stderr) => {
         if (error) {
             console.log(`exec error: ${error}`);
             return;
         }
+
+        fs.readFile(outputFilename, (error, data) => {
+            if (error) {
+                console.log(`readFile error: ${error}`);
+                return;
+            }
+
+            fs.rm(outputFilename, (error) => {
+                if (error) {
+                    console.log(`rm error: ${error}`);
+                }
+
+                event.reply('previewGenerated', data, arg);
+            });
+        });
     });
 });
