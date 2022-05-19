@@ -18,6 +18,8 @@ export class FileNodeComponent implements OnInit {
     @Output()
     public nodeSelected = new EventEmitter<FileNode>();
 
+    public preview?: string;
+
     public ngOnInit(): void {
         // TODO: Use preview manager to prevent EventEmitter memory leak
         this.ipc.on('previewGenerated', (args: any) => this.onPreviewGenerated(args[0], args[1]));
@@ -30,7 +32,7 @@ export class FileNodeComponent implements OnInit {
 
     private onPreviewGenerated(data: any, path: string): void {
         if (path === this.node.path) {
-            console.log('preview generated for', path);
+            this.preview = data;
         }
     }
 }

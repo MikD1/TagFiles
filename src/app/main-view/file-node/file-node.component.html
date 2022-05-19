@@ -1,6 +1,7 @@
 <mat-card class="node" (click)="selectNode()">
-    <img *ngIf="node.isDirectory" mat-card-image src="assets/folder_img.svg">
-    <img *ngIf="!node.isDirectory" mat-card-image src="assets/file_img.svg">
+    <img *ngIf="preview" mat-card-image src="data:image/png;base64,{{preview}}">
+    <img *ngIf="!preview && node.isDirectory" mat-card-image src="assets/folder_img.svg">
+    <img *ngIf="!preview && !node.isDirectory" mat-card-image src="assets/file_img.svg">
     <mat-card-content>
         <p class="node-name">{{node.name}}</p>
     </mat-card-content>

@@ -45,7 +45,7 @@ ipcMain.on('openExternal', (_event, arg) => {
 ipcMain.on('loadNodes', (event, arg) => {
     fs.readdir(arg, { withFileTypes: true }, function (err, nodes) {
         if (err) {
-            console.log('Unable to read directory. ' + err);
+            // console.log('Unable to read directory. ' + err);
         }
 
         let directories = nodes
@@ -78,22 +78,22 @@ ipcMain.on('generatePreview', (event, arg) => {
     var ffmpeg = path.join(__dirname, 'ffmpeg');
     exec(`${ffmpeg} ${arguments}`, (error, _stdout, _stderr) => {
         if (error) {
-            console.log(`exec error: ${error}`);
+            // console.log(`exec error: ${error}`);
             return;
         }
 
         fs.readFile(outputFilename, (error, data) => {
             if (error) {
-                console.log(`readFile error: ${error}`);
+                // console.log(`readFile error: ${error}`);
                 return;
             }
 
             fs.rm(outputFilename, (error) => {
                 if (error) {
-                    console.log(`rm error: ${error}`);
+                    // console.log(`rm error: ${error}`);
                 }
 
-                event.reply('previewGenerated', data, arg);
+                event.reply('previewGenerated', data.toString('base64'), arg);
             });
         });
     });
