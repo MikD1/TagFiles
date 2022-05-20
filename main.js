@@ -74,7 +74,7 @@ ipcMain.on('getParentDirectory', (event, arg) => {
 
 ipcMain.on('generatePreview', (event, arg) => {
     var outputFilename = path.join(__dirname, uuid.v4() + '.jpeg');
-    var arguments = `-i "${arg}" -vf scale=100:-1 -vframes 1 "${outputFilename}"`;
+    var arguments = `-i "${arg}" -vf scale=150:-1 -vframes 1 "${outputFilename}"`;
     var ffmpeg = path.join(__dirname, 'ffmpeg');
     exec(`${ffmpeg} ${arguments}`, (error, _stdout, _stderr) => {
         if (error) {
