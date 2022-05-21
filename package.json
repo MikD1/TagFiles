@@ -2,7 +2,7 @@
     "name": "tag-files",
     "productName": "tag-files",
     "description": "Tag Files application",
-    "version": "0.0.1",
+    "version": "v0.0.3",
     "main": "main.js",
     "scripts": {
         "ng": "ng",
