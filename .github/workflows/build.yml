@@ -14,7 +14,7 @@ jobs:
       - name: build
         run: npm run make
 
-  build_on_mac:
+  build_on_macos:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
       - name: build
         run: npm run make
 
-  build_on_win:
+  build_on_windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
